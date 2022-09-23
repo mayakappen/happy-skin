@@ -21,21 +21,24 @@ class App extends Component {
 
 handleTag = event => {
   this.setState({tag: event.target.id})
+  if (this.state.filtered === []) {
+    let filteredProducts = this.state.products.filter(product => product.tags.includes(event.target.id))
+    return this.setState({ filtered: filteredProducts })
+  }
+  else {
+    let filteredProducts = this.state.filtered.filter(product => product.tags.includes(event.target.id))
+    return this.setState({ filtered: filteredProducts })
+  }
 }
 
 handleType = event => {
   let filtered = this.state.products.filter(product => product.product_type === event.target.id)
-    this.setState({ filtered: filtered})
-}
-
-filterProductCategory = () => {
-let filteredProducts = this.state.products.filter((product) => product.product_type == this.state.category)
-this.setState({... this.state, filtered: filteredProducts})
+    this.setState({ filtered: filtered, category: event.target.id})
 }
 
 componentDidMount() {
   fetchAllProducts()
-    .then(data => this.setState({ ... this.state, products: data }))
+    .then(data => this.setState({products: data }))
     .then(error => console.log(error))  
 }
 
