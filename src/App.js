@@ -1,8 +1,11 @@
 import Navbar from './Components/Navbar'
+import ProductContainer from './Components/ProductContainer'
 import { Component, useEffect } from 'react'
 import CategoryContainer from './Components/Category/Category'
 import {BrowserRouter as Router} from 'react-router-dom'
-import { fetchByProductTag, fetchByProductType, fetchByProductTypeAndTag } from '/Users/mayakappen/turing/3module/happy-skin/src/apiCalls'
+import {fetchAllProducts } from '/Users/mayakappen/turing/3module/happy-skin/src/apiCalls'
+
+
 
 
 class App extends Component {
@@ -21,14 +24,18 @@ handleTag = event => {
 
   handleType = event => {
     this.setState({ category: event.target.id })
-    fetchByProductType(this.state.category)
-      .then(data => this.setState({ products: data }))
-  }
+}
 
-  render() {
+componentDidMount() {
+  fetchAllProducts()
+    .then(data => this.setState({ ... this.state, products: data }))
+    .then(error => console.log(error))  
+}
+render() {
   return (
     <Router>
       <Navbar handler={this.handleType}/>
+     <ProductContainer props={this.state.category} />
       <CategoryContainer />
     </Router>
   );
