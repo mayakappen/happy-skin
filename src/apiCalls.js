@@ -1,6 +1,11 @@
-export const fetchByProductType = ({ type }) => {
+import React from 'react'
+export const fetchAllProducts = () => {
+    return fetch(`http://makeup-api.herokuapp.com/api/v1/products.json`)
+    .then(res=> res.json())
+}
+export const fetchByProductType = (type ) => {
     return fetch(`http://makeup-api.herokuapp.com/api/v1/products.json?product_type=${type}`)
-        .then(response => response.json())
+        .then(res => res.json())
 }
 
 export const fetchByProductTag = ({ tag }) => {
@@ -8,5 +13,5 @@ export const fetchByProductTag = ({ tag }) => {
 }
 
 export const fetchByProductTypeAndTag = ({ type, tag }) => {
-    fetch(`http://makeup-api.herokuapp.com/api/v1/products?product_tags=${tag}&product_type=${type}`)
+    return fetch(`http://makeup-api.herokuapp.com/api/v1/products?product_tags=${tag}&product_type=${type}`)
 }
