@@ -13,6 +13,7 @@ class App extends Component {
     super(props)
     this.state = {
       products: [],
+      filtered: [],
       category: '',
       tag: ''
 }
@@ -22,8 +23,14 @@ handleTag = event => {
   this.setState({tag: event.target.id})
 }
 
-  handleType = event => {
-    this.setState({ category: event.target.id })
+handleType = event => {
+  let filtered = this.state.products.filter(product => product.product_type === event.target.id)
+    this.setState({ filtered: filtered})
+}
+
+filterProductCategory = () => {
+let filteredProducts = this.state.products.filter((product) => product.product_type == this.state.category)
+this.setState({... this.state, filtered: filteredProducts})
 }
 
 componentDidMount() {
@@ -31,6 +38,8 @@ componentDidMount() {
     .then(data => this.setState({ ... this.state, products: data }))
     .then(error => console.log(error))  
 }
+
+
 render() {
   return (
     <Router>
