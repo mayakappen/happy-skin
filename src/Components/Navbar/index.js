@@ -1,6 +1,19 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Nav, NavLink, Bars, NavMenu, NavBtn, NavBtnLink } from './NavbarElements'
-const Navbar = () => {
+
+class Navbar extends Component {
+    constructor() {
+        super()
+        this.state = {
+            type: '',
+            products: []
+        }
+    }
+
+
+
+
+render() {
     return (
     <>
         <Nav>
@@ -8,35 +21,35 @@ const Navbar = () => {
                 <h1>Happy-Skin</h1>
             </NavLink>
             <Bars />
-            <NavMenu>
-                <NavLink to="/foundation">
+                <NavMenu onClick={this.props.handler}>
+                <NavLink to="/foundation" id="foundation" >
                     Foundation
                 </NavLink>
-                <NavLink to="/blush">
+                <NavLink to="/blush" id="blush">
                     Blush
                 </NavLink>
-                 <NavLink to="/bronzer">
+                 <NavLink to="/bronzer" id="bronzer">
                     Bronzer
                  </NavLink>
-                <NavLink to="/eyebrow">
+                <NavLink to="/eyebrow" id="eyebrow">
                     Eyebrows
                 </NavLink>j
-                <NavLink to="/eyeliner">
+                <NavLink to="/eyeliner" id="eyeliner">
                     Eyeliner
                 </NavLink>
-                <NavLink to="/eyeshadow">
+                <NavLink to="/eyeshadow" id="eyeshadow">
                     Eyeshadow
                 </NavLink>
-                <NavLink to="/lip-liner">
+                <NavLink to="/lip-liner" id="lip-liner">
                     Lip Liner
                 </NavLink>
-                <NavLink to="/lipstick">
+                <NavLink to="/lipstick" id="lipstick">
                     Lipstick
                 </NavLink>
-                <NavLink to="/mascara">
+                <NavLink to="/mascara" id="mascara">
                     Mascara
                 </NavLink>
-                <NavLink to="/nail-polish">
+                <NavLink to="/nail-polish" id="nail-polish">
                     Nail Polish
                 </NavLink>
             </NavMenu>
@@ -45,6 +58,7 @@ const Navbar = () => {
             </NavBtn>
         </Nav>
     </>  );
+    }
 }
  
 export default Navbar
