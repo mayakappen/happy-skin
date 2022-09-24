@@ -8,8 +8,9 @@ export const fetchByProductType = (type ) => {
         .then(res => res.json())
 }
 
-export const fetchByProductTag = ({ tag }) => {
-    return fetch(`http://makeup-api.herokuapp.com/api/v1/products?product_tags=${tag}`)
+export const fetchByProductTag = ( tag ) => {
+    return fetch(`http://makeup-api.herokuapp.com/api/v1/products.json?product_tags=${tag}`)
+    .then(res => res.json())
 }
 
 export const fetchByProductTypeAndTag = ({ type, tag }) => {
