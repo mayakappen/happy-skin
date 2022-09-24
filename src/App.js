@@ -15,13 +15,13 @@ class App extends Component {
       products: [],
       filtered: [],
       category: '',
-      tag: ''
+      tags: []
 }
 }
 
 handleTag = event => {
   fetchByProductTag(event.target.id)
-  .then(data => this.setState({ products: data }))
+  .then(data => this.setState({filtered: data, tags: !this.state.tags.includes(event.target.id) && this.state.tags.push('/' + event.target.id)}))
   .catch(err => console.log(err))
   // if (this.state.filtered === []) {
   //   let filteredProducts = this.state.products
@@ -38,17 +38,17 @@ handleType = event => {
   let match = this.state.products.find(product => product.product_type === event.target.id)
   if (match !== undefined) {
     let filtered = this.state.products.filter(product => product.product_type === event.target.id)
-    this.setState({filtered: filtered, category: event.target.id })
+    this.setState({filtered: filtered, category: `/${event.target.id}`})
   } 
   else {
     fetchByProductType(event.target.id)
-      .then(data => this.setState({products: this.state.products.concat(data)}))
+      .then(data => this.setState({ products: this.state.products.concat(data), category: `/${event.target.id}` }))
   }
 }
 render() {
   return (
     <Router>
-      <Navbar typeHandler={this.handleType} tagHandler={this.handleTag} category={this.state.category}/>
+      <Navbar typeHandler={this.handleType} tagHandler={this.handleTag} category={this.state.category} handlePath={this.handlePath} tags={this.state.tags}/>
      <ProductContainer props={this.state.category} />
       <CategoryContainer />
     </Router>
