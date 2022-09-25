@@ -40,7 +40,7 @@ render() {
                 <NavLink to={"/eyeshadow" + this.props.tag} id="eyeshadow">
                     Eyeshadow
                 </NavLink>
-                <NavLink to={"/lip-liner" + this.props.tag} id="lip-liner">
+                <NavLink to={"/lip-liner" + this.props.tag} id="lip_liner">
                     Lip Liner
                 </NavLink>
                 <NavLink to={"/lipstick" + this.props.tag} id="lipstick">
@@ -49,7 +49,7 @@ render() {
                 <NavLink to={"/mascara" + this.props.tag} id="mascara">
                     Mascara
                 </NavLink>
-                <NavLink to={"/nail-polish" + this.props.tag} id="nail-polish">
+                <NavLink to={"/nail-polish" + this.props.tag} id="nail_polish">
                     Nail Polish
                 </NavLink>
             </NavMenu>
