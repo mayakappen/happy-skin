@@ -1,6 +1,6 @@
 import Navbar from './Components/Navbar'
 import ProductContainer from './Components/ProductContainer'
-import { Component, useEffect } from 'react'
+import { Component} from 'react'
 import CategoryContainer from './Components/CategoryContainer'
 import {BrowserRouter as Router} from 'react-router-dom'
 import {fetchAllProducts, fetchByProductTag, fetchByProductType } from '/Users/mayakappen/turing/3module/happy-skin/src/apiCalls'
@@ -22,20 +22,27 @@ class App extends Component {
 }
 
 handleTag = event => {
-  let filtered = []
-  if (this.state.products.length === 0) {
-   fetchByProductTag(event.target.id)
-    .then(data => this.setState({filtered: data, tags: [...this.state.tags, event.target.id], currentTag: '/' + event.target.id}))
-    .catch(err => console.log(err))
-  } 
-  else {
-      this.state.products.forEach(product => {
-       if (product.tag_list.includes(event.target.id)) {
-       filtered.push(product)
-       }
-    })
-    this.setState({filtered: filtered, currentTag: '/' + event.target.id, tags: [...this.state.tags, event.target.id] })}
-}
+  let tag = event.target.id.split('+').join(' ')
+  let category = this.state.category.substring(1)
+  console.log(category)
+  let filterdd
+  // if (this.state.products) {
+  //  fetchByProductTag(tag)
+  //   .then(data => this.setState({filtered: data, tags: [...this.state.tags, tag], currentTag: '/' + event.target.id}))
+  //   .catch(err => console.log(err))
+  // } 
+  // else 
+  this.state.filtered.length === 0 ? 
+     filterdd = this.state.products.filter(product =>
+      product.tag_list.includes(event.target.id.split('+').join(' '))
+    ):
+    filterdd = this.state.filtered.filter(product => product.tag_list.includes(event.target.id.split('+').join(' ')))
+      this.setState({ filtered: filterdd, currentTag: '/' + event.target.id, tags: [...this.state.tags, tag] })
+  
+    return (
+    this.setState({ filtered: filterdd, currentTag: '/' + event.target.id, tags: [...this.state.tags, tag] })
+    )
+  }
 
 
 componentDidMount() {
@@ -46,7 +53,7 @@ componentDidMount() {
 
 handleType = event => {
   this.setState({category: `/${event.target.id}`})
-  if  (this.state.products.length === 0) {
+  if  (this.state.products === []) {
     fetchByProductType(event.target.id)
     .then(data => this.setState({
     filtered: data
@@ -62,7 +69,6 @@ handleType = event => {
 }
 }
   resetFilters = () => {
-
     this.setState({ filtered: [], tags: [], category: '', currentTag: '', })
   }
   render() {

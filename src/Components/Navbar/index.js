@@ -40,7 +40,7 @@ render() {
                 <NavLink to={"/eyeshadow" + this.props.tag} id="eyeshadow">
                     Eyeshadow
                 </NavLink>
-                <NavLink to={"/lip-liner" + this.props.tag} id="lip_liner">
+                <NavLink to={"/lip_liner" + this.props.tag} id="lip_liner">
                     Lip Liner
                 </NavLink>
                 <NavLink to={"/lipstick" + this.props.tag} id="lipstick">
@@ -49,7 +49,7 @@ render() {
                 <NavLink to={"/mascara" + this.props.tag} id="mascara">
                     Mascara
                 </NavLink>
-                <NavLink to={"/nail-polish" + this.props.tag} id="nail_polish">
+                <NavLink to={"/nail_polish" + this.props.tag} id="nail_polish">
                     Nail Polish
                 </NavLink>
             </NavMenu>
@@ -57,11 +57,13 @@ render() {
                 <NavBtnLink to="/saved">Saved</NavBtnLink>
             </NavBtn>
         </Nav>
+            
+                
         <Tags>
-            <NavTags onClick={this.props.tagHandler}>
-                <NavBtn>
-                    <NavBtnLink to="/" onClick={this.props.goHome}>Clear</NavBtnLink>
+                <NavBtn onClick={this.props.goHome}>
+                    <NavBtnLink to="/" >Clear</NavBtnLink>
                 </NavBtn>
+                <NavTags onClick={this.props.tagHandler}>
                     <NavLink to={this.props.category + '/hypoallergenic'} id="Hypoallergenic">
                     HypoAllergenic
                 </NavLink>
