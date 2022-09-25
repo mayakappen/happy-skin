@@ -26,12 +26,12 @@ handleTag = event => {
   let category = this.state.category.substring(1)
   console.log(category)
   let filterdd
-  // if (this.state.products) {
-  //  fetchByProductTag(tag)
-  //   .then(data => this.setState({filtered: data, tags: [...this.state.tags, tag], currentTag: '/' + event.target.id}))
-  //   .catch(err => console.log(err))
-  // } 
-  // else 
+  {this.state.products.length === 0 &&
+   fetchByProductTag(tag)
+    .then(data => this.setState({filtered: data, tags: [...this.state.tags, tag], currentTag: '/' + event.target.id}))
+    .catch(err => console.log(err))
+  } 
+  
   this.state.filtered.length === 0 ? 
      filterdd = this.state.products.filter(product =>
       product.tag_list.includes(event.target.id.split('+').join(' '))
@@ -52,20 +52,31 @@ componentDidMount() {
   }
 
 handleType = event => {
-  this.setState({category: `/${event.target.id}`})
-  if  (this.state.products === []) {
+let filteredd
+{this.state.category.substring(1) !== event.target.id &&  
+    this.setState({category: `/${event.target.id}`, filtered: []})
+
+  if  (this.state.products.length === 0) {
     fetchByProductType(event.target.id)
     .then(data => this.setState({
     filtered: data
     }))
     .catch(error => console.log(error))
   }
-  else {
+  else if (this.state.filtered.length === 0) {
   let match = this.state.products.find(product => product.product_type === event.target.id)
-  if (match !== undefined) {
-    let filtered = this.state.products.filter(product => product.product_type === event.target.id)
-    this.setState({filtered: filtered, category: `/${event.target.id}`})
-  } 
+  filteredd = this.state.products.filter(product => product.product_type === event.target.id)
+  { match !== undefined &&
+    this.setState({filtered: filteredd})
+  }
+}
+  else if (this.state.filtered.length > 1 ) {
+    let match = this.state.filtered.find(product => product.product_type === event.target.id)
+    let filtered = this.state.filtered.filter(product => product.product_type === event.target.id)
+    { match !== undefined &&
+      this.setState({filtered: filtered})
+  }
+}
 }
 }
   resetFilters = () => {
@@ -78,7 +89,7 @@ handleType = event => {
         <ProductContainer products={this.state.filtered} />
         <CategoryContainer />
       </Router>
-    );
+    )
   }
 }
 
