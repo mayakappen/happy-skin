@@ -65,7 +65,7 @@ render() {
   return (
     <Router>
       <Navbar typeHandler={this.handleType} tagHandler={this.handleTag} category={this.state.category} handlePath={this.handlePath} tag={this.state.currentTag}/>
-     <ProductContainer props={this.state.category} />
+     <ProductContainer products={this.state.filtered} />
       <CategoryContainer />
     </Router>
   );
