@@ -1,6 +1,6 @@
 import React from 'react'
 export const fetchAllProducts = () => {
-    return fetch(`http://makeup-api.herokuapp.com/api/v1/products.json`)
+    return fetch('https://makeup-api.herokuapp.com/api/v1/products.json')
     .then(res=> res.json())
 }
 export const fetchByProductType = (type ) => {

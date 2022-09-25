@@ -1,7 +1,7 @@
-import Category from './Category'
+import Category from './Category/Category'
 import React from 'react'
 
-const CategoryContainer = (props) => {
+const CategoryContainer = () => {
     return (
     <div className="category-container">
       <Category className ="Hypoallergenic" id="Hypoallergenic"/>
