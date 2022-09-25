@@ -85,28 +85,28 @@ render() {
                 <NavLink to={this.props.category + '/purpicks'} id="purpicks">
                 Purpicks
                 </NavLink>
-                <NavLink to={this.props.category + '/eco-cert'} id="Eco+cert">
+                <NavLink to={this.props.category + '/eco-cert'} id="EcoCert">
                     EcoCert
                 </NavLink>
                 <NavLink to={this.props.category + '/no-talc'} id="No+Talc">
                     No-Talc
                 </NavLink>
-                <NavLink to={this.props.category + '/chemical-free'} id="Chemical+free">
+                <NavLink to={this.props.category + '/chemical-free'} id="chemical+free">
                     Chemical-Free
                 </NavLink>
-                <NavLink to={this.props.category + '/alcohol-free'} id="Alcohol+free">
+                <NavLink to={this.props.category + '/alcohol-free'} id="alcohol+free">
                     Alcohol-Free
                 </NavLink>
-                <NavLink to={this.props.category + '/silicone-free'} id="Silicone+free">
+                <NavLink to={this.props.category + '/silicone-free'} id="silicone+free">
                     Silicone-Free
                 </NavLink>
-                <NavLink to={this.props.category + '/oil-free'} id="Oil+free">
+                <NavLink to={this.props.category + '/oil-free'} id="oil+free">
                     Oil-Free
                 </NavLink>
-                    <NavLink to={this.props.category + '/dairy-free'} id="Dairy+free">
+                    <NavLink to={this.props.category + '/dairy-free'} id="dairy+free">
                     Dairy-Free
                 </NavLink>
-                    <NavLink to={this.props.category + '/peanut-free'} id="Peanut+free">
+                    <NavLink to={this.props.category + '/peanut-free'} id="peanut+free+product">
                     Peanut-Free
                 </NavLink>
                     <NavLink to={this.props.category + '/gluten-free'} id="Gluten+free">
