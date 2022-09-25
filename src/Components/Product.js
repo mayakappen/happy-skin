@@ -1,21 +1,35 @@
-import React, { Component } from 'react'
+import React from 'react'
+import {NavLink, Link} from 'react-router-dom'
+import {NavBtn, NavBtnLink} from './Navbar/NavbarElements'
 
 const Product = ({props}) => {
 return (
-    
+    <Link to={`${props.id}`}>
     <div className="product">
-                <h1>{props.brand}</h1>
-                <h1>{props.name}</h1>
-                // price:name:  this.props.price,
-                // image_link: this.props.image_link,
-                // website_link: this.props.image_link,
-                // description: this.props.description,
-                // rating: this.props.rating,
-                // category: this.props.category,
-                // product_type: this.props.product_type,
-                // tag_list: this.props.tag_list,
-
+        
+                <h2>{props.name}</h2>
+                <h3>{props.brand}</h3>
+                {props.price > 0 &&
+                 <h3>{props.price_sign}{props.price}</h3>}
+                {props.image_link &&
+                    <img src={props.api_featured_image} alt={`View ${props.name}`}height="80px" width="auto"/>
+                }
+                {props.rating &&
+                <h3>Rating: {props.rating}</h3> }
+                <h3>{props.category}</h3>
+                {props.tag_list &&
+                <h6>{props.tag_list.join(' + ')}</h6>}
+                <NavBtn>
+                    <NavBtnLink>Add</NavBtnLink>
+                </NavBtn>
+        
 </div>
+</Link>
 )}
-
 export default Product;
+                // product_link
+                // website_link
+                // product_colors
+                // api_featured_image
+                // description: this.props.description,
+                // product_type: this.props.product_type,

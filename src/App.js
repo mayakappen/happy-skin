@@ -61,15 +61,19 @@ handleType = event => {
   } 
 }
 }
-render() {
-  return (
-    <Router>
-      <Navbar typeHandler={this.handleType} tagHandler={this.handleTag} category={this.state.category} handlePath={this.handlePath} tag={this.state.currentTag}/>
-     <ProductContainer products={this.state.filtered} />
-      <CategoryContainer />
-    </Router>
-  );
-}
+  resetFilters = () => {
+
+    this.setState({ filtered: [], tags: [], category: '', currentTag: '', })
+  }
+  render() {
+    return (
+      <Router>
+        <Navbar goHome={this.resetFilters} typeHandler={this.handleType} tagHandler={this.handleTag} category={this.state.category} handlePath={this.handlePath} tag={this.state.currentTag} />
+        <ProductContainer products={this.state.filtered} />
+        <CategoryContainer />
+      </Router>
+    );
+  }
 }
 
 export default App;
