@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/happy-skin/static/css/main.e6c13ad2.css",
+    "main.js": "/happy-skin/static/js/main.423d2905.js",
+    "index.html": "/happy-skin/index.html",
+    "main.e6c13ad2.css.map": "/happy-skin/static/css/main.e6c13ad2.css.map",
+    "main.423d2905.js.map": "/happy-skin/static/js/main.423d2905.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.423d2905.js"
+  ]
+}
