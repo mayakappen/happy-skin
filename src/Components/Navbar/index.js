@@ -32,7 +32,7 @@ render() {
                     Bronzer
                  </NavLink>
                 <NavLink to={"/eyebrow" + this.props.tag} id="eyebrow">
-                    Eyebrows
+                    Eyebrow
                 </NavLink>j
                 <NavLink to={"/eyeliner" + this.props.tag} id="eyeliner">
                     Eyeliner
@@ -60,9 +60,7 @@ render() {
             
                 
         <Tags>
-                <NavBtn onClick={this.props.goHome}>
-                    <NavBtnLink to="/" >Clear</NavBtnLink>
-                </NavBtn>
+              
                 <NavTags onClick={this.props.tagHandler}>
                     <NavLink to={this.props.category + '/hypoallergenic'} id="Hypoallergenic">
                     HypoAllergenic
@@ -70,7 +68,7 @@ render() {
                 <NavLink to={this.props.category + '/vegan'} id="Vegan">
                     Vegan
                 </NavLink>
-                <NavLink to={this.props.category + '/cruelty-free'} id="Cruelty+free">
+                <NavLink to={this.props.category + '/cruelty-free'} id="cruelty+free">
                     Cruelty-Free
                 </NavLink>
                 <NavLink to={this.props.category + '/natural'} id="Natural">
@@ -79,7 +77,7 @@ render() {
                 <NavLink to={this.props.category + '/organic'} id="Organic">
                     Organic
                 </NavLink>
-                <NavLink to={this.props.category + '/ewg-verified'} id="Ewg+verified">
+                <NavLink to={this.props.category + '/ewg-verified'} id="EWG+Verified">
                     EWG-Verified
                 </NavLink>
                 <NavLink to={this.props.category + '/purpicks'} id="purpicks">
@@ -91,7 +89,7 @@ render() {
                 <NavLink to={this.props.category + '/no-talc'} id="No+Talc">
                     No-Talc
                 </NavLink>
-                <NavLink to={this.props.category + '/chemical-free'} id="chemical+free">
+                <NavLink to={this.props.category + '/chemical-free'} id="Chemical+Free">
                     Chemical-Free
                 </NavLink>
                 <NavLink to={this.props.category + '/alcohol-free'} id="alcohol+free">
@@ -103,19 +101,19 @@ render() {
                 <NavLink to={this.props.category + '/oil-free'} id="oil+free">
                     Oil-Free
                 </NavLink>
-                    <NavLink to={this.props.category + '/dairy-free'} id="dairy+free">
-                    Dairy-Free
+                <NavLink to={this.props.category + '/cert-clean'} id="CertClean">
+                    CertClean
                 </NavLink>
-                    <NavLink to={this.props.category + '/peanut-free'} id="peanut+free+product">
-                    Peanut-Free
-                </NavLink>
-                    <NavLink to={this.props.category + '/gluten-free'} id="Gluten+free">
+                    <NavLink to={this.props.category + '/gluten-free'} id="Gluten+Free">
                     Gluten-Free
                 </NavLink>
-                    <NavLink to={this.props.category + '/sugar-free'} id="Sugar+free">
-                    Sugar-Free
+                    <NavLink to={this.props.category + '/usda-organic'} id="USDA+Organic">
+                    USDA Organic
                 </NavLink>
-                <NavLink to={this.props.category + '/water-free'} id="Water+free">
+                <NavLink to={this.props.category + '/peanut-free-product'} id="Peanut+Free+Product">
+                    Peanut-Free
+                    </NavLink>
+                <NavLink to={this.props.category + '/water-free'} id="water+free">
                     Water-Free
                 </NavLink>
 

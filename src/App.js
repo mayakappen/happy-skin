@@ -23,15 +23,17 @@ class App extends Component {
 }
 
 handleTag = event => {
+  event.preventDefault()
   let tag = event.target.id.split('+').join(' ')
   let category = this.state.category.substring(1)
   console.log(category)
   let filterdd = []
-  this.state.products.length === 0 && 
-   fetchByProductTag(tag)
-    .then(data => this.setState({filtered: data, tags: [...this.state.tags, tag], currentTag: '/' + event.target.id}))
-    .catch(err => console.log(err))
+  this.state.products.length === 0 ?
   
+   fetchByProductTag(tag)
+    .then(data => this.setState({filtered: data, tags: [tag], currentTag: '/' + event.target.id}))
+    .catch(err => console.log(err))
+  :
   
   this.state.filtered.length === 0 ? 
      filterdd = this.state.products.filter(product =>
@@ -44,7 +46,6 @@ handleTag = event => {
     return (
       this.setState({ filtered: filterdd, currentTag: '/' + event.target.id })
     )
-  
   }
 componentDidMount() {
   fetchAllProducts()
@@ -66,7 +67,7 @@ let matchh = this.state.products.find(product => product.product_type === event.
   this.setState({ category: `/${event.target.id}`, filtered: this.state.products.filter(product => product.tag_list.includes(this.state.currentTag.substring(1))) })
 }
 else if (filtered.length === 0 && products.length > 0) {
-  this.setState({ filtered: products.filter(product => product.product_type === event.target.id) })
+  this.setState({filtered: products.filter(product => product.product_type === event.target.id) })
 }
 else if (filtered.length > 0) {
   filteredd = filtered.filter(product => product.product_type === event.target.id)
@@ -85,6 +86,7 @@ products = fetchByProductType(event.target.id)
 else {
   this.setState({error: true})
 }
+  this.setState({ category: `/${event.target.id}`})
 }
 
   resetFilters = () => {
@@ -93,8 +95,8 @@ else {
   render() {
     return (
       <Router>
-        <Navbar goHome={this.resetFilters} typeHandler={this.handleType} tagHandler={this.handleTag} category={this.state.category} handlePath={this.handlePath} tag={this.state.currentTag} />
-        <ProductContainer products={this.state.filtered} tagss={this.state.tags} categoryy={this.state.category.substring(1)}/>
+        <Navbar  goHome = {this.resetFilters} typeHandler={this.handleType} tagHandler={this.handleTag} category={this.state.category} handlePath={this.handlePath} tag={this.state.currentTag} />
+        <ProductContainer products={this.state.filtered} tagss={this.state.tags} categoryy={this.state.category.substring(1)} reset={this.resetFilters} />
         <CategoryContainer />
       </Router>
     )
