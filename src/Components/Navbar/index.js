@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import React, { Component } from 'react'
 import { Nav, Tags, NavLink, Bars, NavMenu, NavTags, NavBtn, NavBtnLink } from './NavbarElements'
 
@@ -121,6 +122,14 @@ render() {
         </Tags>
     </>  );
     }
+}
+
+Navbar.propTypes = {
+  category: PropTypes.string,
+  goHome: PropTypes.func,
+  tag: PropTypes.any,
+  tagHandler: PropTypes.func,
+  typeHandler: PropTypes.func
 }
  
 export default Navbar
