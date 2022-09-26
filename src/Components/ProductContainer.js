@@ -6,11 +6,10 @@ import {NavBtn, NavBtnLink} from './Navbar/NavbarElements'
 
 const ProductContainer = ({products, tagss, categoryy, reset, select, selected, addFav}) =>  {
 
-const filtered =  products.map(product => {
-    return (<Product favorite={addFav} selectProduct={select} value={product} key={product.id} id={product.id} name={product.name} brand={product.brand} type ={product.product_type}  price={product.price} 
-        price_sign={product.price_sign}  api_image={product.api_featured_image} rating={product.rating}
-        category={product.category} tag_list={product.tag_list}/>)})
-console.log(selected)
+    const filtered =  products.map(product => {
+        return (<Product favorite={addFav} selectProduct={select} value={product} key={product.id} id={product.id} name={product.name} brand={product.brand} type ={product.product_type}  price={product.price} 
+            price_sign={product.price_sign}  api_image={product.api_featured_image} rating={product.rating}
+            category={product.category} tag_list={product.tag_list}/>)})
 
 return (
 filtered.length === 0 && tagss.length === 0 &&
@@ -69,9 +68,7 @@ ProductContainer.propTypes = {
   products: PropTypes.array,
   reset: PropTypes.func,
   select: PropTypes.func,
-  selected: PropTypes.shape({
-    name: PropTypes.string
-  }),
+  selected: PropTypes.object,
   tagss: PropTypes.array,
 }
 

@@ -42,13 +42,11 @@ Product.propTypes = {
   favorite: PropTypes.func,
   id: PropTypes.number,
   name: PropTypes.string,
-  price: PropTypes.number,
+  price: PropTypes.string,
   price_sign: PropTypes.any,
   rating: PropTypes.number,
   selectProduct: PropTypes.func,
-  tag_list: PropTypes.shape({
-    join: PropTypes.func
-  })
+  tag_list: PropTypes.array
 }
 export default Product;
                 // product_link
