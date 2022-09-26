@@ -2,13 +2,15 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { NavBtn, NavBtnLink } from './Navbar/NavbarElements'
 
-const Product = ({selectProduct, key, name, brand, price , rating, price_sign, api_image, category, tag_list} ) => {
+const Product = ({selectProduct, id, name, brand, price , rating, price_sign, api_image, category, tag_list} ) => {
 
-
+const chooseProduct = () => {
+    selectProduct(id)
+ 
+}
     return (
-        <Link onClick={() => selectProduct} exact to={`/${key}`} id={key} key={key}> 
-            <div className="product">
-
+        <Link to={`/${id}`} id={id} key={id}> 
+            <div className="product" onClick={chooseProduct}>
                 <h2>{name}</h2>
                 <h3>{brand}</h3>
                 {price > 0 && price_sign &&

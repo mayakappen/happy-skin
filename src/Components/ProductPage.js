@@ -1,16 +1,15 @@
 import { NavBtn, NavBtnLink } from "./Navbar/NavbarElements"
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useLocation} from 'react-router-dom'
 
-const ProductPage = ({currentProduct}) => {
-
-    const [product, setProduct] = useState({})
+const ProductPage = (currentProduct) => {
+    const [product, setProduct] = useState({currentProduct})
     const location = useLocation()
-    console.log(location.pathname)
+    console.log(product)
     return (
         <div className="product-page">
-            <h1>{currentProduct.name}</h1>
-            <h2>({currentProduct.category} + {''} + {currentProduct.product_type})</h2>
+            <h1>{currentProduct.currentProduct.name}</h1>
+            <h2>({currentProduct.category} + {''} + {product.product_type})</h2>
             <h3>{currentProduct.brand}</h3>
             {currentProduct.price > 0 &&
                 <h3>{currentProduct.price_sign}{currentProduct.price}</h3>}

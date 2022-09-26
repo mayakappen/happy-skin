@@ -17,7 +17,15 @@ class App extends Component {
       temp: [],
       category: '',
       currentTag: '',
-      currentProduct: {},
+      currentProduct: {id: 0,
+                      name: '', 
+                      brand: '',
+                      price: '',
+                      rating: '',
+                      price_sign: '',
+                      api_image: '',
+                      category: '',
+                      tag_list: ''},
       tags: [],
       error: false,
 }
@@ -54,9 +62,10 @@ componentDidMount() {
     .catch(error => console.log(error))
   }
 
-selectProduct = event => {
-  this.setState({currentProduct: this.state.products.find(product => event.target.id === product.id)})
-  console.log(this.state.currentProduct.name)
+selectProduct = id => {
+  const matching = this.state.filtered.find(product => product.id === id)
+  console.log(matching)
+  this.setState({currentProduct: matching})
 }
 
 handleType = event => {
@@ -97,15 +106,19 @@ else {
   }
   render() {
     return (
+      this.state.currentProduct.name === '' ? 
       <div>
         <Navbar goHome={this.resetFilters} typeHandler={this.handleType} tagHandler={this.handleTag} category={this.state.category} handlePath={this.handlePath} tag={this.state.currentTag} />
-        <Routes>
-        <Route path={'*'} element={<ProductContainer selected={this.state.currentProduct} select={this.selectProduct} products={this.state.filtered} tagss={this.state.tags} categoryy={this.state.category.substring(1)} reset={this.resetFilters}/>}/>
-        </Routes>
+        <ProductContainer select={this.selectProduct} products={this.state.filtered} tagss={this.state.tags} categoryy={this.state.category.substring(1)} reset={this.resetFilters}/>
       </div>
-      
+     : 
+        <div>
+        <Navbar goHome={this.resetFilters} typeHandler={this.handleType} tagHandler={this.handleTag} category={this.state.category} handlePath={this.handlePath} tag={this.state.currentTag} />
+        <ProductPage currentProduct={this.state.currentProduct}/>
+      </div>
     )
   }
+
 }
 
 export default App;

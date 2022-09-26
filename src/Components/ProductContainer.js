@@ -5,20 +5,20 @@ import {NavBtn, NavBtnLink} from './Navbar/NavbarElements'
 const ProductContainer = ({tagHandler, typeHandler, products, tagss, categoryy, reset, select, selected}) =>  {
 
 const filtered =  products.map(product => {
-    return (<Product selectProduct={select} key={product.id} name={product.name} brand={product.brand} type ={product.product_type}  price={product.price} 
+    return (<Product selectProduct={select} value={product} key={product.id} id={product.id} name={product.name} brand={product.brand} type ={product.product_type}  price={product.price} 
         price_sign={product.price_sign}  api_image={product.api_featured_image} rating={product.rating}
         category={product.category} tag_list={product.tag_list}/>)})
     
 return (
     <div className = 'product-container'>
-        <div className = 'filters' onClick={select}>
+        <div className = 'filters'>
             <h3>{categoryy}</h3>
             <h4>{tagss}</h4>
             <NavBtn onClick={reset}>
                 <NavBtnLink to="/" >Clear</NavBtnLink>
             </NavBtn>
         </div>
-        {products.length > 0 && filtered}
+        {filtered}
         {tagss.length > 0  && products.length === 0 ? 
         <h2>{`We're having trouble finding ${tagss} ${categoryy}`}</h2>
         :
