@@ -82,7 +82,6 @@ componentDidMount() {
 
 selectProduct = id => {
   const matching = this.state.filtered.find(product => product.id === id)
-  console.log(matching)
   this.setState({currentProduct: matching})
 }
 
