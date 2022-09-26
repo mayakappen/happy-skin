@@ -22,39 +22,39 @@ render() {
             </NavLink>
             <Bars />
                 <NavMenu onClick={this.props.typeHandler}>
-                <NavLink to={"/foundation" + this.props.tag} id="foundation" >
+                <NavLink to={"/foundation" + this.props.tag} id="Foundation" >
                     Foundation
                 </NavLink>
-                <NavLink to={"/blush" + this.props.tag} id="blush">
+                <NavLink to={"/blush" + this.props.tag} id="Blush">
                     Blush
                 </NavLink>
-                 <NavLink to={"/bronzer" + this.props.tag} id="bronzer">
+                 <NavLink to={"/bronzer" + this.props.tag} id="Bronzer">
                     Bronzer
                  </NavLink>
-                <NavLink to={"/eyebrow" + this.props.tag} id="eyebrow">
+                <NavLink to={"/eyebrow" + this.props.tag} id="Eyebrow">
                     Eyebrow
                 </NavLink>j
-                <NavLink to={"/eyeliner" + this.props.tag} id="eyeliner">
+                <NavLink to={"/eyeliner" + this.props.tag} id="Eyeliner">
                     Eyeliner
                 </NavLink>
-                <NavLink to={"/eyeshadow" + this.props.tag} id="eyeshadow">
+                <NavLink to={"/eyeshadow" + this.props.tag} id="Eyeshadow">
                     Eyeshadow
                 </NavLink>
-                <NavLink to={"/lip_liner" + this.props.tag} id="lip_liner">
+                <NavLink to={"/lip_liner" + this.props.tag} id="Lip_Liner">
                     Lip Liner
                 </NavLink>
-                <NavLink to={"/lipstick" + this.props.tag} id="lipstick">
+                <NavLink to={"/lipstick" + this.props.tag} id="Lipstick">
                     Lipstick
                 </NavLink>
-                <NavLink to={"/mascara" + this.props.tag} id="mascara">
+                <NavLink to={"/mascara" + this.props.tag} id="Mascara">
                     Mascara
                 </NavLink>
-                <NavLink to={"/nail_polish" + this.props.tag} id="nail_polish">
+                <NavLink to={"/nail_polish" + this.props.tag} id="Nail_Polish">
                     Nail Polish
                 </NavLink>
             </NavMenu>
             <NavBtn>
-                <NavBtnLink to="/saved">Saved</NavBtnLink>
+                    <NavBtnLink to={'/favorites'}>Saved</NavBtnLink>
             </NavBtn>
         </Nav>
             

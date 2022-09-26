@@ -6,6 +6,7 @@ import CategoryContainer from './Components/CategoryContainer'
 import {fetchAllProducts, fetchByProductTag, fetchByProductType, fetchByProductTypeAndTag } from '/Users/mayakappen/turing/3module/happy-skin/src/apiCalls'
 import {Routes, Route, useParams} from 'react-router-dom'
 import {NavBtn, NavBtnLink} from './Components/NavbarElements'
+import Favorites from './Components/Favorites'
 
 
 class App extends Component {
@@ -14,7 +15,7 @@ class App extends Component {
     this.state = {
       products: [],
       filtered: [],
-      temp: [],
+      favorites: ['ellie'],
       category: '',
       currentTag: '',
       currentProduct: {id: 0,
@@ -30,13 +31,16 @@ class App extends Component {
       error: false,
 }
 }
-
+handleFavorite = id => {
+  let fav = this.state.products.find(product => product.id === id)
+  this.setState({...this.state, favorites: fav})
+}
 handleTag = event => {
   event.preventDefault()
   let tag = event.target.id.split('+').join(' ')
-  let category = this.state.category.substring(1)
+  let category = this.state.category.substring(0)
   console.log(category)
-  let filterdd = []
+  let filterdd = this.state.filtered
   this.state.products.length === 0 ?
   
    fetchByProductTag(tag)
@@ -51,10 +55,18 @@ handleTag = event => {
     filterdd = this.state.filtered.filter(product => product.tag_list.includes(event.target.id.split('+').join(' ')))
   
   !this.state.tags.includes(tag) && 
-    this.setState({ tags: [...this.state.tags, tag] })
-    return (
-      this.setState({ filtered: filterdd, currentTag: '/' + event.target.id })
-    )
+    this.setState({ tags: [...this.state.tags, tag], filtered: filterdd.filter(product => product.tag_list.includes(tag)), currentTag: '/' + event.target.id, 
+      currentProduct: {id: 0,
+      name: '',
+      brand: '',
+      price: '',
+      rating: '',
+      price_sign: '',
+      api_image: '',
+      category: '',
+      tag_list: ''
+    } })
+    
   }
 componentDidMount() {
   fetchAllProducts()
@@ -69,22 +81,17 @@ selectProduct = id => {
 }
 
 handleType = event => {
-this.setState({ category: `/${event.target.id}` })
-let filteredd = this.state.filtered.filter(product => product.product_type === event.target.id)
-let category = this.state.category.substring(1)
-console.log(category)
+event.preventDefault()
 let products = this.state.products
 let filtered = this.state.filtered
-let matchh = this.state.products.find(product => product.product_type === event.target.id)
-
-
 if (filtered.length === 0 && products.length > 0) {
-  this.setState({filtered: products.filter(product => product.product_type === event.target.id) })
+  this.setState({filtered: products.filter(product => product.product_type === event.target.id.toLowerCase())})
 }
-else if (filtered.length > 0 && products.length > 0) {
-  this.setState({filtered: products.filter(product => event.target.id === product.product_type)}) 
-  this.setState({...this.state, filtered: this.state.filtered.filter(product => product.tag_list.includes(this.state.currentTag.substring(0)))})
+else if (filtered.length > 0 && products.length > 0 ) {
+  this.setState({filtered: products.filter(product => product.product_type === event.target.id.toLowerCase())}) 
+
 }
+
 else if (
 filtered.length === 0 &&
 products.length === 0) 
@@ -98,27 +105,47 @@ products = fetchByProductType(event.target.id)
 else {
   this.setState({error: true})
 }
-
+  this.setState({
+    category: `/${event.target.id}`, currentProduct: {
+      id: 0,
+      name: '',
+      brand: '',
+      price: '',
+      rating: '',
+      price_sign: '',
+      api_image: '',
+      category: '',
+      tag_list: ''
+    }
+  })
 }
 
   resetFilters = () => {
-    this.setState({ filtered: [], tags: [], category: '', currentTag: '', })
+    this.setState({
+      filtered: [], tags: [], category: '', currentTag: '', currentProduct: {
+        id: 0,
+        name: '',
+        brand: '',
+        price: 0,
+        rating: 0,
+        price_sign: '',
+        api_image: '',
+        category: '',
+        tag_list: ''
+      }
+})
   }
   render() {
     return (
-      this.state.currentProduct.name === '' ? 
       <div>
         <Navbar goHome={this.resetFilters} typeHandler={this.handleType} tagHandler={this.handleTag} category={this.state.category} handlePath={this.handlePath} tag={this.state.currentTag} />
-        <ProductContainer select={this.selectProduct} products={this.state.filtered} tagss={this.state.tags} categoryy={this.state.category.substring(1)} reset={this.resetFilters}/>
-      </div>
-     : 
-        <div>
-        <Navbar goHome={this.resetFilters} typeHandler={this.handleType} tagHandler={this.handleTag} category={this.state.category} handlePath={this.handlePath} tag={this.state.currentTag} />
-        <ProductPage currentProduct={this.state.currentProduct}/>
+        <Routes>
+        <Route path={'*'} element={<ProductContainer select={this.selectProduct} products={this.state.filtered}  tagss={this.state.tags} categoryy={this.state.category.substring(1)} reset={this.resetFilters} selected={this.state.currentProduct}/>}/>
+        <Route exact path={'/favorites'} element={<Favorites favorites={this.state.favorites} />} />
+        </Routes>
       </div>
     )
   }
 
 }
-
 export default App;

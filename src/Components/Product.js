@@ -28,7 +28,6 @@ const chooseProduct = () => {
                 <NavBtn>
                     <NavBtnLink>Add</NavBtnLink>
                 </NavBtn>
-
             </div>
         </Link>
     )

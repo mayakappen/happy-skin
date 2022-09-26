@@ -9,18 +9,17 @@ const ProductPage = (currentProduct) => {
     return (
         <div className="product-page">
             <h1>{currentProduct.currentProduct.name}</h1>
-            <h2>({currentProduct.category} + {''} + {product.product_type})</h2>
-            <h3>{currentProduct.brand}</h3>
-            {currentProduct.price > 0 &&
-                <h3>{currentProduct.price_sign}{currentProduct.price}</h3>}
-            {currentProduct.api_featured_image &&
-                <img src={currentProduct.api_featured_image} alt={`View ${currentProduct.name}`} height="80px" width="auto" />
+            <h2>({currentProduct.currentProduct.category} + {''} + {currentProduct.currentProduct.product_type})</h2>
+            <h3>{currentProduct.currentProduct.brand}</h3>
+            {currentProduct.currentProduct.price > 0 &&
+                <h3>{currentProduct.currentProduct.price_sign}{currentProduct.price}</h3>}
+            {currentProduct.currentProduct.api_featured_image &&
+                <img src={currentProduct.currentProduct.api_featured_image} alt={`View ${currentProduct.currentProduct.name}`} height="80px" width="auto" />
             }
-            {currentProduct.rating &&
-                <h3>Rating: {currentProduct.rating}</h3>}
-            <h3>{currentProduct.category}</h3>
-            {currentProduct.tag_list &&
-                <h6>{currentProduct.tag_list.join(' + ')}</h6>}
+            {currentProduct.currentProduct.rating &&
+                <h3>Rating: {currentProduct.currentProduct.rating}</h3>}
+            {currentProduct.currentProducttag_list &&
+                <h6>{currentProduct.currentProduct.tag_list.join(' + ')}</h6>}
             <NavBtn>
                 <NavBtnLink>Add</NavBtnLink>
             </NavBtn>
