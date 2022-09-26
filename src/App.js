@@ -1,11 +1,11 @@
 import Navbar from './Components/Navbar'
 import ProductContainer from './Components/ProductContainer'
+import ProductPage from './Components/ProductPage'
 import { Component} from 'react'
 import CategoryContainer from './Components/CategoryContainer'
-import {BrowserRouter as Router} from 'react-router-dom'
 import {fetchAllProducts, fetchByProductTag, fetchByProductType, fetchByProductTypeAndTag } from '/Users/mayakappen/turing/3module/happy-skin/src/apiCalls'
-
-
+import {Routes, Route, useParams} from 'react-router-dom'
+import {NavBtn, NavBtnLink} from './Components/NavbarElements'
 
 
 class App extends Component {
@@ -17,6 +17,7 @@ class App extends Component {
       temp: [],
       category: '',
       currentTag: '',
+      currentProduct: {},
       tags: [],
       error: false,
 }
@@ -53,6 +54,10 @@ componentDidMount() {
     .catch(error => console.log(error))
   }
 
+selectProduct = event => {
+  this.setState({currentProduct: this.state.products.find(product => event.target.id === product.id)})
+  console.log(this.state.currentProduct.name)
+}
 
 handleType = event => {
 this.setState({ category: `/${event.target.id}` })
@@ -92,11 +97,13 @@ else {
   }
   render() {
     return (
-      <Router>
-        <Navbar  goHome = {this.resetFilters} typeHandler={this.handleType} tagHandler={this.handleTag} category={this.state.category} handlePath={this.handlePath} tag={this.state.currentTag} />
-        <ProductContainer products={this.state.filtered} tagss={this.state.tags} categoryy={this.state.category.substring(1)} reset={this.resetFilters} />
-        <CategoryContainer />
-      </Router>
+      <div>
+        <Navbar goHome={this.resetFilters} typeHandler={this.handleType} tagHandler={this.handleTag} category={this.state.category} handlePath={this.handlePath} tag={this.state.currentTag} />
+        <Routes>
+        <Route path={'*'} element={<ProductContainer selected={this.state.currentProduct} select={this.selectProduct} products={this.state.filtered} tagss={this.state.tags} categoryy={this.state.category.substring(1)} reset={this.resetFilters}/>}/>
+        </Routes>
+      </div>
+      
     )
   }
 }
