@@ -24,7 +24,6 @@ filtered.length === 0 && tagss.length === 0 &&
                 <div className='message'>
                     <h2>Welcome to Happy Skin! Select your product type and filters to find the right match for you!</h2>
                 </div> 
-
 </div>
 || selected.name !== '' &&
 
