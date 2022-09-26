@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { AddBtn } from './ProductElements'
@@ -32,6 +33,22 @@ const favoriteProduct = () => {
             </div>
         </Link>
     )
+}
+
+Product.propTypes = {
+  api_image: PropTypes.string,
+  brand: PropTypes.string,
+  category: PropTypes.string,
+  favorite: PropTypes.func,
+  id: PropTypes.number,
+  name: PropTypes.string,
+  price: PropTypes.number,
+  price_sign: PropTypes.any,
+  rating: PropTypes.number,
+  selectProduct: PropTypes.func,
+  tag_list: PropTypes.shape({
+    join: PropTypes.func
+  })
 }
 export default Product;
                 // product_link

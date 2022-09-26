@@ -7,8 +7,8 @@ import Favorites from './Components/Favorites'
 import PropTypes from'prop-types'
 
 class App extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
       this.state = {
         products: [],
         filtered: [],
