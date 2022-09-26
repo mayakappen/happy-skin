@@ -2,7 +2,6 @@ import React from "react";
 import Product from './Product';
 
 const Favorites = ({favorites}) => {
-console.log(favorites)
 
     return (
         <div className = 'favContainer'>
