@@ -55,23 +55,21 @@ componentDidMount() {
 
 
 handleType = event => {
-event.preventDefault()
+this.setState({ category: `/${event.target.id}` })
 let filteredd = this.state.filtered.filter(product => product.product_type === event.target.id)
 let category = this.state.category.substring(1)
+console.log(category)
 let products = this.state.products
 let filtered = this.state.filtered
 let matchh = this.state.products.find(product => product.product_type === event.target.id)
 
- if (category === event.target.id &&
-  products.length > 1 ) {
-  this.setState({ category: `/${event.target.id}`, filtered: this.state.products.filter(product => product.tag_list.includes(this.state.currentTag.substring(1))) })
-}
-else if (filtered.length === 0 && products.length > 0) {
+
+if (filtered.length === 0 && products.length > 0) {
   this.setState({filtered: products.filter(product => product.product_type === event.target.id) })
 }
-else if (filtered.length > 0) {
-  filteredd = filtered.filter(product => product.product_type === event.target.id)
-  this.setState({ filtered: filteredd }) 
+else if (filtered.length > 0 && products.length > 0) {
+  this.setState({filtered: products.filter(product => event.target.id === product.product_type)}) 
+  this.setState({...this.state, filtered: this.state.filtered.filter(product => product.tag_list.includes(this.state.currentTag.substring(0)))})
 }
 else if (
 filtered.length === 0 &&
@@ -86,7 +84,7 @@ products = fetchByProductType(event.target.id)
 else {
   this.setState({error: true})
 }
-  this.setState({ category: `/${event.target.id}`})
+
 }
 
   resetFilters = () => {
