@@ -40,7 +40,7 @@ Product.propTypes = {
   brand: PropTypes.string,
   category: PropTypes.string,
   favorite: PropTypes.func,
-  id: PropTypes.number,
+  id: PropTypes.any,
   name: PropTypes.string,
   price: PropTypes.string,
   price_sign: PropTypes.any,

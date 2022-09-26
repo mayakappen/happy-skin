@@ -36,7 +36,7 @@ filtered.length === 0 && tagss.length === 0 &&
                 <h3>{categoryy}</h3>
                 <h4>{tagss}</h4>
                 <NavBtn onClick={reset}>
-                    <NavBtnLink to="/" >Clear</NavBtnLink>
+                    <NavBtnLink to="/happy-skin" >Clear</NavBtnLink>
                 </NavBtn>
                    
                 <div className='error'>
@@ -53,7 +53,7 @@ filtered.length === 0 && tagss.length === 0 &&
             <h3>{categoryy}</h3>
             <h4>{tagss}</h4>
             <NavBtn onClick={reset}>
-                <NavBtnLink to="/" >Clear</NavBtnLink>
+                <NavBtnLink to="/happy-skin" >Clear</NavBtnLink>
             </NavBtn>
         </div>
         {filtered}
