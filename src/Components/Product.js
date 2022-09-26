@@ -1,28 +1,34 @@
 import React from 'react'
-import { NavLink, Link } from 'react-router-dom'
-import { NavBtn, NavBtnLink } from './Navbar/NavbarElements'
+import { Link } from 'react-router-dom'
+import { AddBtn } from './ProductElements'
 
-const Product = ({ props }) => {
+const Product = ({selectProduct, id, name, brand, price , rating, price_sign, api_image, category, tag_list, favorite} ) => {
+
+const chooseProduct = () => {
+    selectProduct(id)
+}
+
+const favoriteProduct = () => {
+    favorite(id)
+}
     return (
-        <Link to={`${props.id}`}>
-            <div className="product">
-
-                <h2>{props.name}</h2>
-                <h3>{props.brand}</h3>
-                {props.price > 0 &&
-                    <h3>{props.price_sign}{props.price}</h3>}
-                {props.image_link &&
-                    <img src={props.api_featured_image} alt={`View ${props.name}`} height="80px" width="auto" />
+        <Link to={`/${id}`} id={id} key={id}> 
+            <div className="product" onClick={chooseProduct}>
+                <h2>{name}</h2>
+                <h3>{brand}</h3>
+                {price > 0 && price_sign &&
+                    <h3>{price_sign}{price}</h3>}
+                {api_image &&
+                    <img src={api_image} alt={`View ${name}`} height="80px" width="auto" />
                 }
-                {props.rating &&
-                    <h3>Rating: {props.rating}</h3>}
-                <h3>{props.category}</h3>
-                {props.tag_list &&
-                    <h6>{props.tag_list.join(' + ')}</h6>}
-                <NavBtn>
-                    <NavBtnLink>Add</NavBtnLink>
-                </NavBtn>
-
+                {rating &&
+                    <h3>Rating: {rating}</h3>}
+                {category &&
+                <h3>{category}</h3>
+}
+                {tag_list &&
+                    <h6>{tag_list.join(' + ')}</h6>}
+                <AddBtn onClick={favoriteProduct}>Add</AddBtn>
             </div>
         </Link>
     )

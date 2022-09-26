@@ -1,34 +1,30 @@
-import {NavBtn, NavBtnLink} from "./Navbar/NavbarElements"
-import React, {Component} from 'react'
+import { NavBtn, NavBtnLink } from "./Navbar/NavbarElements"
+import React, {useEffect, useState} from 'react'
+import {useLocation} from 'react-router-dom'
+import {AddBtn} from './ProductElements'
 
-class ProductPage extends Component {
-    constructor(props) {
-        super(props)
-            this.state = {
-                faved: false
+const ProductPage = (currentProduct) => {
+    const [product, setProduct] = useState({currentProduct})
+    const location = useLocation()
+    console.log(product)
+    return (
+        <div className="product-page">
+            <h1>{currentProduct.currentProduct.name}</h1>
+            <h2>({currentProduct.currentProduct.category} + {''} + {currentProduct.currentProduct.product_type})</h2>
+            <h3>{currentProduct.currentProduct.brand}</h3>
+            {currentProduct.currentProduct.price > 0 &&
+                <h3>{currentProduct.currentProduct.price_sign}{currentProduct.price}</h3>}
+            {currentProduct.currentProduct.api_featured_image &&
+                <img src={currentProduct.currentProduct.api_featured_image} alt={`View ${currentProduct.currentProduct.name}`} height="80px" width="auto" />
             }
-            
-        }
-    render() {
-        return (
-            <div className="product-page">
-                <h1>{this.props.name}</h1>
-                <h2>({this.props.category} + {''} + {this.props.product_type})</h2>
-                <h3>{this.props.brand}</h3>
-                {this.props.price > 0 &&
-                    <h3>{this.props.price_sign}{this.props.price}</h3>}
-                {this.props.api_featured_image &&
-                    <img src={this.props.api_featured_image} alt={`View ${this.props.name}`} height="80px" width="auto" />
-                }
-                {this.props.rating &&
-                    <h3>Rating: {this.props.rating}</h3>}
-                <h3>{this.props.category}</h3>
-                {this.props.tag_list &&
-                    <h6>{this.props.tag_list.join(' + ')}</h6>}
-                <NavBtn>
-                    <NavBtnLink>Add</NavBtnLink>
-                </NavBtn>
-            </div>
-        )
-    }
+            {currentProduct.currentProduct.rating &&
+                <h3>Rating: {currentProduct.currentProduct.rating}</h3>}
+            {currentProduct.currentProducttag_list &&
+                <h6>{currentProduct.currentProduct.tag_list.join(' + ')}</h6>}
+            <AddBtn>
+                <NavBtnLink>Add</NavBtnLink>
+            </AddBtn>
+        </div>
+    )
 }
+export default ProductPage
