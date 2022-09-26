@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Happy-Skin
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An application for people with sensitive skin or allergies who want to find beauty products that are right for them. Users have access to a wide variety of product types and filters which can be combined to discover the perfect product. Users can also view products they've added to the Saved section.
 
-## Available Scripts
+### [Deployed Link](https://mayakappen.github.io/happy-skin/)
 
-In the project directory, you can run:
+### Tech Used
 
-### `npm start`
+* React
+* React Router V6
+* React Styled Components
+* CSS
+* Cypress
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Powered by [The Makeup API](https://makeup-api.herokuapp.com/) 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Screenshots
+![React App (3)](https://user-images.githubusercontent.com/102932448/192383671-a2034dda-f923-4ac7-91e8-ea6ebfda76ec.gif)
+![React App (4)](https://user-images.githubusercontent.com/102932448/192383824-8ae8cd20-9321-4c50-bd08-1a664eea9fc9.gif)
+![React App (5)](https://user-images.githubusercontent.com/102932448/192383943-44e37803-2046-4573-a4c1-d35b81215099.gif)
 
-### `npm test`
+### Future Extensions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Delete saved products
 
-### `npm run build`
+* Flesh out product page more, theres a lot more info I can bring in!
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* A search text input allowing users to search by product name
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* A review section where users can submit reviews of products they've tried
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Additional styling to bring everything up to the level of polish of the Nav Bar
 
-### `npm run eject`
+### Reflections
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+First of all I learned so much about time management with this project. I focused a lot on balancing the network traffic and the loading times and spent probably too much time trying out different ways of bringing in the api data. Some were 20 second wait times where the user couldn't navigate the app at all and others were fast but with a bunch of network traffic. I settled on a compromise of doing a big fetch for all product data, and if a user was to navigate from the homepage during that time then the app knows to fetch the category or tag data from a different, smaller, endpoint. This is all switched to working within state once the initial fetch is complete.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+I also realized I was overcomplicating things with the amount of components I am creating, some may not have been necessary and only made it confusing, I'm looking forward to feedback on this!
+Overall this was a really challenging project. I started out with an idea in mind for how to impliment the router, and looking back its clear I could have done it dynamically with routes instead of a bunch of links and using state to manipulate the path. I would like to refactor this over break as well as add more styling, the [styled components](https://styled-components.com/) 💅 are really fun to play around with!
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The biggest takeaway for me after this project is to focus more on mvp and then worry about everything else AFTER! I almost forgot to add the save products to view later part of my mvp because I was so focused on getting the filters to work under any circumstance. All in all this was a really educational project for me and I can't wait to polish it up over the break!
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+I Am proud of my styling and breakpoints I was able to add but I got very sidetracked doing these filter functions
+### Contributors
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Maya Kappen [LinkedIn](https://www.linkedin.com/in/maya-kappen-64b97123b/)
