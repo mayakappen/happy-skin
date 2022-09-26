@@ -33,7 +33,7 @@ class App extends Component {
 }
 handleFavorite = id => {
   let fav = this.state.products.find(product => product.id === id)
-  this.setState({...this.state, favorites: fav})
+  this.setState({favorites: [...this.state.favorites, fav]})
 }
 handleTag = event => {
   event.preventDefault()
@@ -140,7 +140,7 @@ else {
       <div>
         <Navbar goHome={this.resetFilters} typeHandler={this.handleType} tagHandler={this.handleTag} category={this.state.category} handlePath={this.handlePath} tag={this.state.currentTag} />
         <Routes>
-        <Route path={'*'} element={<ProductContainer select={this.selectProduct} products={this.state.filtered}  tagss={this.state.tags} categoryy={this.state.category.substring(1)} reset={this.resetFilters} selected={this.state.currentProduct}/>}/>
+        <Route path={'*'} element={<ProductContainer addFav={this.handleFavorite} select={this.selectProduct} products={this.state.filtered}  tagss={this.state.tags} categoryy={this.state.category.substring(1)} reset={this.resetFilters} selected={this.state.currentProduct}/>}/>
         <Route exact path={'/favorites'} element={<Favorites favorites={this.state.favorites} />} />
         </Routes>
       </div>

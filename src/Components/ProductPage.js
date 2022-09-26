@@ -1,6 +1,7 @@
 import { NavBtn, NavBtnLink } from "./Navbar/NavbarElements"
 import React, {useEffect, useState} from 'react'
 import {useLocation} from 'react-router-dom'
+import {AddBtn} from './ProductElements'
 
 const ProductPage = (currentProduct) => {
     const [product, setProduct] = useState({currentProduct})
@@ -20,9 +21,9 @@ const ProductPage = (currentProduct) => {
                 <h3>Rating: {currentProduct.currentProduct.rating}</h3>}
             {currentProduct.currentProducttag_list &&
                 <h6>{currentProduct.currentProduct.tag_list.join(' + ')}</h6>}
-            <NavBtn>
+            <AddBtn>
                 <NavBtnLink>Add</NavBtnLink>
-            </NavBtn>
+            </AddBtn>
         </div>
     )
 }

@@ -1,12 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { NavBtn, NavBtnLink } from './Navbar/NavbarElements'
+import { AddBtn } from './ProductElements'
 
-const Product = ({selectProduct, id, name, brand, price , rating, price_sign, api_image, category, tag_list} ) => {
+const Product = ({selectProduct, id, name, brand, price , rating, price_sign, api_image, category, tag_list, favorite} ) => {
 
 const chooseProduct = () => {
     selectProduct(id)
- 
+}
+
+const favoriteProduct = () => {
+    favorite(id)
 }
     return (
         <Link to={`/${id}`} id={id} key={id}> 
@@ -25,9 +28,7 @@ const chooseProduct = () => {
 }
                 {tag_list &&
                     <h6>{tag_list.join(' + ')}</h6>}
-                <NavBtn>
-                    <NavBtnLink>Add</NavBtnLink>
-                </NavBtn>
+                <AddBtn onClick={favoriteProduct}>Add</AddBtn>
             </div>
         </Link>
     )

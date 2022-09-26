@@ -3,10 +3,10 @@ import Product from './Product'
 import ProductPage from './ProductPage'
 import {NavBtn, NavBtnLink} from './Navbar/NavbarElements'
 
-const ProductContainer = ({products, tagss, categoryy, reset, select, selected}) =>  {
+const ProductContainer = ({products, tagss, categoryy, reset, select, selected, addFav}) =>  {
 
 const filtered =  products.map(product => {
-    return (<Product selectProduct={select} value={product} key={product.id} id={product.id} name={product.name} brand={product.brand} type ={product.product_type}  price={product.price} 
+    return (<Product favorite={addFav} selectProduct={select} value={product} key={product.id} id={product.id} name={product.name} brand={product.brand} type ={product.product_type}  price={product.price} 
         price_sign={product.price_sign}  api_image={product.api_featured_image} rating={product.rating}
         category={product.category} tag_list={product.tag_list}/>)})
 console.log(selected)
