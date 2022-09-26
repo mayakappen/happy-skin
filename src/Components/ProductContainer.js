@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import React from 'react'
 import Product from './Product'
 import ProductPage from './ProductPage'
@@ -60,6 +61,18 @@ filtered.length === 0 && tagss.length === 0 &&
 
     </div>
 )
+}
+
+ProductContainer.propTypes = {
+  addFav: PropTypes.func,
+  categoryy: PropTypes.string,
+  products: PropTypes.array,
+  reset: PropTypes.func,
+  select: PropTypes.func,
+  selected: PropTypes.shape({
+    name: PropTypes.string
+  }),
+  tagss: PropTypes.array,
 }
 
 
