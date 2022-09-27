@@ -1,7 +1,7 @@
 import Navbar from './Components/Navbar'
 import ProductContainer from './Components/ProductContainer'
 import { Component} from 'react'
-import {fetchAllProducts, fetchByProductTag, fetchByProductType} from '/Users/mayakappen/turing/3module/happy-skin/src/apiCalls'
+import {fetchAllProducts, fetchByProductTag, fetchByProductType} from './happy-skin/src/apiCalls'
 import {Routes, Route} from 'react-router-dom'
 import Favorites from './Components/Favorites'
 import PropTypes from'prop-types'
